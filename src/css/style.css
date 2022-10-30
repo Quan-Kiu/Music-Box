@@ -1,0 +1,264 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  max-height: 100vh;
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+main {
+  padding: 2rem;
+  background: url("../img/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+main .music__lyrics {
+  transition: 0.3s;
+  height: 350px;
+  max-width: 600px;
+  top: 0;
+  text-align: center;
+  font-size: 16px;
+  overflow: hidden;
+  margin-left: 10rem;
+  position: relative;
+  overflow: auto;
+  border-radius: 10px;
+}
+main .music__lyrics .lyric {
+  top: 150px;
+  position: relative;
+  transition: 0.3s;
+}
+main .music__lyrics .lyric p.o-2 {
+  background: transparent;
+  opacity: 0.2;
+}
+main .music__lyrics .lyric p.o-4 {
+  background: transparent;
+  opacity: 0.4;
+}
+main .music__lyrics .lyric p.active {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.4);
+}
+main .music__lyrics::-webkit-scrollbar {
+  display: none;
+}
+main .music__lyrics p {
+  color: white;
+  line-height: 50px;
+  padding: 0 1rem;
+  opacity: 0.1;
+  transition: 0.5s;
+  cursor: pointer;
+  border-radius: 10px;
+  backdrop-filter: blur(2px);
+}
+main .left__content {
+  width: 35%;
+}
+main .music__card {
+  margin-left: auto;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.15);
+  min-width: 40rem;
+  max-width: 40rem;
+  padding: 3rem 4rem;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0.5rem 0.5rem rgba(204, 204, 204, 0.25), inset 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+main .music__card .card__photo {
+  min-height: 320px;
+}
+main .music__card .card__photo img {
+  pointer-events: none;
+  width: 100%;
+}
+main .music__card .card__control {
+  margin-top: 2rem;
+  flex: 1;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  color: #EC643B;
+}
+main .music__card .card__control .repeat,
+main .music__card .card__control .random {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+main .music__card .card__control .repeat.active,
+main .music__card .card__control .random.active {
+  background: linen;
+}
+main .music__card .card__control svg {
+  width: 20px;
+  cursor: pointer;
+  fill: currentColor;
+}
+main .music__card .card__control svg path {
+  fill: currentColor;
+}
+main .music__card .card__control .card__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+main .music__card .card__control .card__progress__music {
+  position: relative;
+  margin: 1rem 0;
+  /* slider thumb */
+}
+main .music__card .card__control .card__progress__music input {
+  appearance: none;
+  background: transparent;
+  color: #ec643b61;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+}
+main .music__card .card__control .card__progress__music input[type=range]::-webkit-slider-runnable-track {
+  background-color: #ec643b61;
+  height: 0.5rem;
+}
+main .music__card .card__control .card__progress__music input[type=range]::-webkit-slider-thumb {
+  /* Override default look */
+  appearance: none;
+  /* Centers thumb on the track */
+  margin-top: -0.25rem;
+  /*custom styles*/
+  background-color: #EC643B;
+  height: 1rem;
+  border-radius: 50%;
+  width: 1rem;
+}
+main .music__card .card__control .card__progress__music progress {
+  position: absolute;
+  top: 0;
+  width: calc(100% * var(--progress));
+  height: 5px;
+  background: #EC643B;
+}
+main .music__card .card__control .card__progress__music progress::-moz-progress-bar {
+  background: #EC643B;
+}
+main .music__card .card__control .card__progress__music progress::-webkit-progress-value {
+  background: #EC643B;
+}
+main .music__card .card__control .card__progress__music progress {
+  color: #EC643B;
+}
+main .music__card .card__control .card__control__music {
+  margin-top: 1rem;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+main .music__card .card__control .card__control__music .song__control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+main .music__card .card__control .card__control__music .song__control .prev svg {
+  transform: rotate(180deg);
+}
+main .music__card .card__control .card__control__music .song__control .play svg {
+  width: 40px;
+}
+main .music__card .card__control .card__control__music .song__control .play .play-btn {
+  display: block;
+}
+main .music__card .card__control .card__control__music .song__control .play .pause-btn {
+  display: none;
+}
+main .music__card .card__control .card__control__music .song__control .play.active .play-btn {
+  display: none;
+}
+main .music__card .card__control .card__control__music .song__control .play.active .pause-btn {
+  display: block;
+}
+@media only screen and (max-width: 1024px) {
+  main {
+    flex-direction: column;
+    justify-content: center;
+  }
+  main .left__content {
+    width: unset;
+  }
+  main .left__content img {
+    height: 100%;
+  }
+  main .music__lyrics {
+    top: 50%;
+    transform: translateY(calc(-50% - 66px));
+    z-index: 1;
+    font-size: 14px;
+    position: absolute;
+    margin-left: 0;
+    border-radius: 0;
+    width: 320px;
+    height: 320px;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  main .music__lyrics p {
+    border-radius: 0;
+    line-height: 30px;
+  }
+}
+@media only screen and (max-width: 450px) {
+  main {
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+  }
+  main .left__content {
+    width: 340px;
+  }
+  main .left__content .music__card {
+    min-width: unset;
+    padding: 2rem;
+  }
+  main .left__content .music__card .card__photo {
+    min-width: unset;
+  }
+  main .music__lyrics {
+    transform: translateY(calc(-50% - 74px));
+    width: 300px;
+    height: 300px;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
